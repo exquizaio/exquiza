@@ -4,7 +4,7 @@ class ApplicationDecorator < Draper::Decorator
   def session_actions
     h.unordered_list class: "user-profile-action-list site-header-box site-header-box--omega" do
       unless h.user_signed_in?
-        h.content_tag :li, signin_button, class: "user-profile-action"
+        # h.content_tag :li, signin_button, class: "user-profile-action"
         # h.content_tag :li, signup_button, class: "user-profile-action"
       else
         h.content_tag :li, signout_button, class: "user-profile-action"

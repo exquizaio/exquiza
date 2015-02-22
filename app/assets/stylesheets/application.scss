@@ -29,3 +29,13 @@ body {
   font-size: 116%;
   line-height: 1.2;
 }
+
+.box {
+  background-color: white;
+}
+
+.box-container--center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

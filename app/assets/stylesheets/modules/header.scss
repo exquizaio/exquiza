@@ -31,19 +31,6 @@ $header-bg-color: map-get($pink, "darken-1");
   }
 }
 
-.button {
-  border: none;
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit;
-  background: none;
-  cursor: pointer;
-  display: inline-block;
-  letter-spacing: 1px;
-  outline: none;
-  transition: all 0.3s;
-}
-
 $header-button-bg-color: map-get($pink, "darken-3");
 $header-button-hover-bg-color: map-get($pink, "darken-4");
 .header-button {
