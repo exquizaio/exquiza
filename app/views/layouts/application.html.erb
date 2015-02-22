@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html <%= yield :html %>>
+<head>
+  <title>Exquiza</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.1.1/katex.min.css">
+
+  <%= csrf_meta_tags %>
+</head>
+<body  class="blue-grey lighten-5">
+
+  <%= render partial: "application/header", locals: { app: ApplicationDecorator.new(Object.new) } %>
+
+  <%= yield %>
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.1.1/katex.min.js"></script>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+</body>
+</html>

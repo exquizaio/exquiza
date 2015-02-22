@@ -1,0 +1,37 @@
+# == Schema Information
+#
+# Table name: questions
+#
+#  id           :integer          not null, primary key
+#  directions   :text
+#  difficulty   :integer
+#  grade_level  :integer
+#  prompt_id    :integer
+#  prompt_type  :string
+#  choices_id   :integer
+#  tests_id     :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  responses_id :integer
+#
+
+class Question < ActiveRecord::Base
+  acts_as_taggable
+  acts_as_taggable_on :subjects
+  has_and_belongs_to_many :tests
+  has_many :choices, inverse_of: :question
+  belongs_to  :prompt, polymorphic: true
+  has_many :responses
+
+  accepts_nested_attributes_for :prompt, allow_destroy: true
+  accepts_nested_attributes_for :choices, allow_destroy: true
+
+
+  def score(selected_choice, some_choices)
+    correct_choice = some_choices.answers.first
+    #puts "A: " + correct_choice.id.inspect
+    #puts "B: " + selected_choice.id.inspect
+    #(selected_choice.id == correct_choice.id)
+  end
+
+end

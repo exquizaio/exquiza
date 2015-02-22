@@ -1,0 +1,125 @@
+
+$green: rgb(46, 204, 113);
+$red: rgb(231, 76, 60);
+
+.Report {
+  padding: 2rem;
+
+  &-Breakdown {
+    max-width: 60rem;
+    margin: 0.5em auto;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+  }
+  &-Header {
+    margin: 2rem auto 1rem;
+    text-align: center;
+
+    &-Title {
+      font-size: 4em;
+      font-weight: lighter;
+    }
+  }
+}
+
+.Report-Details {
+  font-size: 0.8em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 30rem;
+  margin: 0 auto;
+
+}
+
+.Report-Summary {
+  background-color: white;
+  margin: 0.5em auto;
+  max-width: 40rem;
+  padding: 2rem 1.5rem;
+  font-size: 1.5em;
+}
+
+.Summary-Item {
+  text-align: center;
+
+  &-Title {
+    font-weight: lighter;
+  }
+  &-Description {
+    font-size: 3em;
+  }
+}
+
+.Box {
+  flex: 0 0 auto;
+
+  &-Container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+  }
+  &--Wrong {
+    color: $red;
+  }
+  &--Correct {
+    color: $green;
+  }
+}
+
+.Report-Bar {
+  flex: 1 1 auto;
+  display: flex;
+  width: 40em;
+  height: 1.5rem;
+  background-color: white;
+  padding: 0.2rem;
+}
+.Report-Percentage {
+  flex: 0 0 auto;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+.Bar-Item {
+  flex: 1 1 auto;
+  border: 1px solid white;
+
+
+  &--Wrong {
+    background-color: $red;
+  }
+  &--Correct {
+    background-color: $green;
+  }
+
+}
+
+.Site-Header {
+  font-size: 2em;
+  line-height: 1.3;
+  position: sticky;
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+
+@media screen and (max-width: 60em) {
+  body {
+    font-size: 100%;
+  }
+}
+@media screen and (max-width: 700px), (orientation: portrait) {
+  .Report {
+    padding: 1.5rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  body {
+    font-size: 90%;
+  }
+  .Report {
+    padding: 0.5rem;
+  }
+}

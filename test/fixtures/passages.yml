@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: passages
+#
+#  id                 :integer          not null, primary key
+#  passage_prompts_id :integer
+#  author             :string
+#  source             :string
+#  body               :text
+#  title              :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  passage_prompts: 
+  author: MyString
+  source: MyString
+  body: MyText
+  title: MyString
+
+two:
+  passage_prompts: 
+  author: MyString
+  source: MyString
+  body: MyText
+  title: MyString

@@ -1,0 +1,213 @@
+
+.Page--Question {
+  body {
+    height: 100vh;
+  }
+  main {
+    height: 100%;
+
+    header + & {
+      height: calc(100% - 2.3rem);
+    }
+  }
+}
+
+  .Question {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: stretch;
+    padding: 1rem;
+
+    & > * {
+      margin: 1rem;
+    }
+  }
+  .Question-Content {
+    position: relative;
+    flex: 3 1 20rem;
+    background-color: white;
+  }
+
+  .Choice_List {
+    flex: 2 0 20rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: stretch;
+    align-items: stretch;
+
+    &.active {
+      .Choice {
+        &.active {
+          background-color: #0083F5;
+          color: white;
+        }
+      }
+    }
+  }
+
+  .Question-Info_List {
+    display: inline;
+    & > * {
+      display: inline;
+    }
+  }
+
+  .Question-Info-Wrapper {
+    width: 100%;
+    height: 1.4em;
+    color: white;
+    position: absolute;
+    bottom: 0;
+
+  }
+  .Prompt-Wrapper {
+    padding: 1rem;
+  }
+  .Question-Directions {
+    font-weight: bold;
+    margin-bottom: 1.4rem;
+    border-bottom: 1px solid lightgrey;
+  }
+  .Prompt {
+    padding: 0.75rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .Choice {
+    font-size: 1.4em;
+    flex: 1 1 4em;
+    border-bottom: 1px solid fade(black, 10%);
+    background-color: white;
+    transition-duration: 0.5s;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 5em;
+    margin: 0.5rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &:hover{
+      cursor: pointer;
+      background-color: rgb(245, 245, 245);
+    }
+
+    &-Next{
+      $that-blue: #0083F5;
+      display: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 15px;
+      background-color: white;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      margin-top: -15px;
+      box-shadow: 0 3px 2px fade(black, 20%);
+
+      &:hover{
+        box-shadow: 0 3px 2px fade(black, 40%);
+        cursor: pointer;
+
+        &:before{
+          transform: rotate(405deg);
+        }
+
+        &:after{
+          transform: rotate(360deg);
+        }
+      }
+
+      &:before, &:after{
+
+        border-radius: 2px;
+
+        position: absolute;
+        content: "";
+
+
+        transition-duration: 0.33s;
+      }
+
+      &:before{
+        transform: rotate(45deg);
+        height: 7px;
+        width: 7px;
+        top: 10.5px;
+        left: 13px;
+        border-right: 2px solid $that-blue;
+        border-top: 2px solid $that-blue;
+      }
+
+      &:after{
+        width: 16px;
+        height: 2px;
+        background-color: $that-blue;
+        top: 14px;
+        left:7px;
+      }
+    }
+
+    &.margin{
+      margin-bottom: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    &.active{
+      box-shadow: 0px 5px 10px fade(black, 20%);
+      border-bottom: none;
+      color: black;
+
+      transition-delay: 0.1s;
+      transform: scale(1.1, 1.1);
+    }
+  }
+
+  @media screen and (max-width: 60em) {
+    body {
+      font-size: 100%;
+    }
+  }
+  @media screen and (max-width: 700px), (orientation: portrait) {
+    .Page--Question body {
+      height: auto;
+      overflow-y: scroll;
+      padding-bottom: 2em;
+    }
+    .Page--Question main {
+      height: 100%;
+    }
+    .Question {
+      height: 100%;
+      padding: 1rem;
+      display: block;
+
+      &-Content {
+        min-height: 50vh;
+      }
+    }
+    .Choice_List {
+      flex-direction: row;
+      justify-content: space-between;
+      align-content: space-around;
+      margin: 1rem;
+
+      .Choice {
+        flex: 1 0 10em;
+        max-height: 6rem;
+        &.margin{
+          margin: 0 1.5rem;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 400px) {
+    body {
+      font-size: 90%;
+    }
+  }

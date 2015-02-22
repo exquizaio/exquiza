@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Question #<%= @question.id %></h1>
+<dd>
+  <dt>Difficulty</dt>
+  <dd><%= @question.difficulty %></dd>
+  <dt>Grade Level</dt>
+  <dd><%= @question.grade_level %></dd>
+  <dt>Subjects</dt>
+  <dd><%= @question.subject_list.join(", ") %></dd>
+  <dt>Tags</dt>
+  <dd><%= @question.tag_list.join(", ") %></dd>
+</dd>
+<section class="question-prompt">
+  <h3>Prompt</h3>
+  <%= render partial: "questions/#{@question.prompt.model_name.collection}/show", locals: { prompt: @question.prompt } %>
+</section>
+<h3>Choices</h3>
+<ol>
+  <% @question.choices.each do |choice| %>
+  <li>
+    <%= choice.answer? ? "★ | " : "" %>
+    <%= choice.to_s %>
+  </li>
+  <% end %>
+</ol>
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>

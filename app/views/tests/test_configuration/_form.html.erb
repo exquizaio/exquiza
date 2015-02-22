@@ -1,0 +1,18 @@
+<%= form.fields_for :test_configuration do |config| %>
+<dd>
+  <dt><%= config.label :number_of_questions %></dt>
+  <dd><%= config.number_field :number_of_questions %></dd>
+  <dt><%= config.label :min_difficulty %></dt>
+  <dd><%= config.number_field :min_difficulty %></dd>
+  <dt><%= config.label :max_difficulty %></dt>
+  <dd><%= config.number_field :max_difficulty, step: 1, in: 0..100 %></dd>
+  <dt><%= config.label :min_grade_level %></dt>
+  <dd><%= config.number_field :min_grade_level, step: 1, in: -1..12 %></dd>
+  <dt><%= config.label :max_grade_level %></dt>
+  <dd><%= config.number_field :max_grade_level, step: 1, in: -1..12 %></dd>
+  <dt><%= config.label :subject_list, "Subjects (Comma Seperated List)" %></dt>
+  <dd><%= config.text_field :subject_list %></dd>
+  <dt><%= config.label :tag_list, "Tags (Comma Seperated List)" %></dt>
+  <dd><%= config.text_field :tag_list %></dd>
+</dd>
+<% end %>

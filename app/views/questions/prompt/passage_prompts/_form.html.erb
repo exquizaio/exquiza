@@ -1,0 +1,9 @@
+<%= f.simple_fields_for :prompt do |prompt_form| %>
+  <%= prompt_form.simple_fields_for :passage do |passage_prompt| %>
+    <%= passage_prompt.input :title %>
+    <%= passage_prompt.input :author %>
+    <%= passage_prompt.input :source %>
+    <%= passage_prompt.input :body, placeholder: "Enter Passage Text Here..." %>
+  <% end %>
+  <%= prompt_form.input :content, placeholder: "Enter Question Text Here..." %>
+<% end %>

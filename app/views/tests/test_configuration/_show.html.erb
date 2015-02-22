@@ -1,0 +1,14 @@
+<% test.test_configuration.tap do |config| %>
+<dd>
+  <dt>Number of Questions</dt>
+  <dd><%= config.number_of_questions %></dd>
+  <dt>Difficulty</dt>
+  <dd><%= config.min_difficulty %> through <%= config.max_difficulty %></dd>
+  <dt>Grade Level</dt>
+  <dd><%= config.min_grade_level %> through <%= config.max_grade_level %></dd>
+  <dt>Subjects</dt>
+  <dd><%= config.subject_list.join(", ") %></dd>
+  <dt>Tags</dt>
+  <dd><%= config.tag_list.join(", ") %></dd>
+</dd>
+<% end %>

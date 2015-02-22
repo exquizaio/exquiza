@@ -1,0 +1,2 @@
+module TestTaking::QuestionsHelper
+end

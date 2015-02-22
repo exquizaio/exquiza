@@ -1,0 +1,64 @@
+@import "variables";
+
+$header-bg-color: map-get($pink, "darken-1");
+
+@mixin anchor-reset {
+  text-decoration: none;
+}
+
+.site-header {
+  background-color: $header-bg-color;
+  line-height: 1.4;
+  padding: 0.1em 0.5em;
+  position: sticky;
+  color: white;
+  width: 100%;
+  text-align: center;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &-box {
+    flex: 0 0 auto;
+
+    &--alpha {
+      order: -1;
+    }
+    &--omega {
+      order: 999;
+    }
+  }
+}
+
+.button {
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  display: inline-block;
+  letter-spacing: 1px;
+  outline: none;
+  transition: all 0.3s;
+}
+
+$header-button-bg-color: map-get($pink, "darken-3");
+$header-button-hover-bg-color: map-get($pink, "darken-4");
+.header-button {
+  @include anchor-reset;
+  font-size: 0.9em;
+  padding: 0.45em 0.75em;
+  margin: 0.2em 0.05em;
+  background-color: $header-button-bg-color;
+  border-radius: 0.4em;
+
+  &:hover {
+    background-color: $header-button-hover-bg-color;
+  }
+}
+
+.site-header-logo--text {
+  font-size: 1.5em;
+}

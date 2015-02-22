@@ -1,0 +1,28 @@
+<% content_for(:html) { 'class=".Page--Question"' } %>
+
+<main>
+  <section class="Question <%= @question.answered? ? "Question--answered" : "" %>">
+    <section class="Question-Content">
+      <article class="Prompt-Wrapper">
+        <p class="Question-Directions">Read the following prompt and select the most correct answer.</p>
+        <%= raw @question.prompt.to_tag %>
+      </article>
+      <footer class="Question-Info-Wrapper pink lighten-3">
+        <dl class="Question-Info_List Info_List">
+          <dt class="Info_List-Key Info_List-Key--question_count">Question</dt>
+          <dd class="Info_List-Value Info_List-Value--question_count">
+            <span class="question_count--current"><%= @question.id %></span> / <span class="question_count--total">@test.test_configuration.number_of_questions</span>
+          </dd>
+        </dl>
+      </footer>
+    </section>
+    <ol class="Choice_List">
+      <% @question.choices.each do |c| %>
+      <li class="Choice Choice--text" data-choice-id="<%= c.id %>">
+        <%= c.to_s %>
+        <% if @question.answered? %><i class="Choice-Next Button--next"></i><% end %>
+      </li>
+      <% end %>
+    </ol>
+  </section>
+</main>

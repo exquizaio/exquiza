@@ -1,0 +1,36 @@
+<%= simple_form_for(@question) do |f| %>
+  <% if @question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+      <% @question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset class="question-details">
+    <%= f.input :difficulty, step: 1, in: 0..100 %>
+    <%= f.input :grade_level, step: 1, in: -1..12 %>
+    <%= f.input :subject_list, label: "Subjects (Comma Seperated List)"%>
+    <%= f.input :tag_list, label: "Tags (Comma Seperated List)" %>
+  </fieldset>
+
+  <%= render partial: "questions/#{@question.prompt.model_name.collection}/form", locals: { f: f } %>
+
+  <h2>Choices</h2>
+  <small>Enter Choices here and select which is the correct answer</small>
+  <ol>
+    <%= f.simple_fields_for :choices do |choices_form| %>
+      <li>
+        <%= choices_form.input :answer, title: "Answer?" %>
+        <%= choices_form.input :content, placeholder: "New Choice Text" %>
+      </li>
+    <% end %>
+  </ol>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,40 @@
+
+<main class="Report">
+  <header class="Report-Header">
+    <h1 class="Report-Header-Title">Report</h1>
+    <dl class="Report-Details">
+      <div class="Details--Student">
+        <dt class="Details--Key">Student</dt>
+        <dd class="Details--Value"><%= @test.user.full_name %></dd>
+      </div>
+      <div class="Details--Start">
+        <dt class="Details--Key">Started</dt>
+        <dd class="Details--Value"><%= @test.started_on %></dd>
+      </div>
+      <div class="Details--Finish">
+        <dt class="Details--Key">Finished</dt>
+        <dd class="Details--Value"><%= @test.finished_on %></dd>
+      </div>
+    </dl>
+  </header>
+  <section class="Report-Breakdown">
+    <h2 class="Report-Percentage"><%= @test.percent_correct %>%</h2>
+    <ol class="Report-Bar">
+      <% @test.responses.each_with_index do |r, i| %>
+        <li class="Bar-Item Bar-Item--<%= r.correct? ? 'Correct' : 'Wrong' %>" title="Question #<%= i + 1 %>"></li>
+      <% end %>
+    </ol>
+  </section>
+  <section class="Report-Summary">
+    <dl class="Box-Container Box--flex">
+      <div class="Box Box--Correct Summary-Item">
+        <dt class="Summary-Item-Title">Correct</dt>
+        <dd class="Summary-Item-Description"><%= @test.responses.correct_responses.size %></dd>
+      </div>
+      <div class="Box Box--Wrong Summary-Item">
+        <dt class="Summary-Item-Title">Wrong</dt>
+        <dd class="Summary-Item-Description"><%= @test.responses.wrong_responses.size %></dd>
+      </div>
+    </dl>
+  </section>
+</main>
