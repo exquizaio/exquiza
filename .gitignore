@@ -44,3 +44,8 @@ pickle-email-*.html
 /vendor/assets/bower_components
 *.bowerrc
 bower.json
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
