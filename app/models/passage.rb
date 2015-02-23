@@ -15,8 +15,6 @@
 class Passage < ActiveRecord::Base
   has_many :passage_prompts, class_name: "Prompt::PassagePrompt"
 
-  val
-
   def byline
     title.titlecase + ", by " + author.titlecase
   end
