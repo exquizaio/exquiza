@@ -17,8 +17,10 @@ class QuestionsController < ApplicationController
   def new
     @question = Question.new
     prompt = Prompt.for(params[:prompt_type]).new
-    passage = Passage.new
-    prompt.update_attributes(passage: passage)
+    if prompt.is_a? Prompt::PassagePrompt
+      passage = Passage.new
+      prompt.update_attributes(passage: passage)
+    end
     @question.update_attributes(prompt: prompt)
     4.times { @question.choices.build }
     respond_with(@question.decorate)
