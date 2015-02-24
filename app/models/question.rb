@@ -16,8 +16,7 @@
 #
 
 class Question < ActiveRecord::Base
-  acts_as_taggable
-  acts_as_taggable_on :subjects
+  acts_as_taggable_on :tags, :subjects
   has_and_belongs_to_many :tests
   has_many :choices, inverse_of: :question
   belongs_to  :prompt, polymorphic: true
