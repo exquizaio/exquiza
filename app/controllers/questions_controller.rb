@@ -18,10 +18,9 @@ class QuestionsController < ApplicationController
     @question = Question.new
     prompt = Prompt.for(params[:prompt_type]).new
     if prompt.is_a? Prompt::PassagePrompt
-      passage = Passage.new
-      prompt.update_attributes(passage: passage)
+      prompt.passage = Passage.new
     end
-    @question.update_attributes(prompt: prompt)
+    @question.prompt = prompt
     4.times { @question.choices.build }
     respond_with(@question.decorate)
   end
@@ -30,8 +29,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new(question_params).decorate
-    @question.save
+    @question = Question.create(question_params).decorate
     respond_with(@question)
   end
 
@@ -58,10 +56,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:prompt, :difficulty, :grade_level, :subject_list, :tag_list, prompt_attributes: prompt_params, choices_attributes: [:id,:answer, :content])
-  end
-
-  def prompt_params
-    @question.prompt.class.params
+    params.require(:question).permit(:difficulty, :grade_level, :subject_list, :tag_list, prompt_attributes: Prompt.params, choices_attributes: [:id,:answer, :content])
   end
 end

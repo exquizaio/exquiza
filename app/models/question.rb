@@ -25,10 +25,24 @@ class Question < ActiveRecord::Base
   accepts_nested_attributes_for :prompt, allow_destroy: true
   accepts_nested_attributes_for :choices, allow_destroy: true
 
+  validates_presence_of :tag_list, :subject_list
+  validates :difficulty,
+    inclusion: { within: 0..100 },
+    presence: true
+  validates :grade_level,
+    inclusion: { within: 0..12 },
+    presence: true
+
   def answer
     choices.find(:correct?)
   end
-  
+
+  def build_prompt(params)
+    type = params.delete(:type)
+    puts type
+    self.prompt = Prompt.type_map[type].new(params)
+  end
+
   def score(selected_choice, some_choices)
     correct_choice = some_choices.answers.first
     #puts "A: " + correct_choice.id.inspect

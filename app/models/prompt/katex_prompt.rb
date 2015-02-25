@@ -21,4 +21,12 @@ class Prompt::KatexPrompt < ActiveRecord::Base
   def to_s
     content.to_s
   end
+
+  def type
+    "katex"
+  end
+
+  def self.type
+    "katex"
+  end
 end

@@ -9,7 +9,7 @@ module Prompt
     end
 
     def for(type)
-      return type if type_map.value?(type)
+      # return type if type_map.value?(type)
       type_map[type]
     end
 
@@ -22,7 +22,7 @@ module Prompt
     end
 
     def type_map
-      @@type_map ||= setup_type_map
+      {"paragraph" => Prompt::ParagraphPrompt, "passage" => Prompt::PassagePrompt, "katex" => Prompt::KatexPrompt}
     end
 
     def setup_type_map
@@ -44,15 +44,19 @@ module Prompt
     def accepted_types
       type_map.keys.uniq
     end
+
+    def params
+      type_map.values.flat_map(&:params).uniq.push(:type)
+    end
   end
 
   module ClassMethods
     def type_for(*objects)
-      Prompt.register_types(self, *objects)
+      # Prompt.register_types(self, *objects)
     end
 
     def associated_types
-      Prompt.type_map.select {|k,v| v == self }.keys
+      Prompt.type_map.select {|k,v| self == v }.keys
     end
   end
 end

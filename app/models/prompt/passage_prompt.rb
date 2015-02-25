@@ -17,4 +17,12 @@ class Prompt::PassagePrompt < ActiveRecord::Base
   def to_s
     "[#{passage.byline}] #{content}"
   end
+
+  def type
+    "passage"
+  end
+
+  def self.type
+    "passage"
+  end
 end
