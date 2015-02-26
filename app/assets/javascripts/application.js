@@ -19,3 +19,9 @@ var tex = document.querySelectorAll("[data-expr]");
 Array.prototype.forEach.call(tex, function(el) {
   katex.render(el.getAttribute("data-expr"), el);
 });
+
+causeRepaintsOn = $("h1, h2, h3, p");
+
+$(window).resize(function() {
+  causeRepaintsOn.css("z-index", 1);
+});

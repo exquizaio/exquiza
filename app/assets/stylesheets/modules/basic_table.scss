@@ -1,0 +1,138 @@
+body {
+  background-color: white !important;
+}
+
+.question-header--index {
+  text-align: center;
+  font-size: 1.2em;
+  margin: 0.85em 0.5em 0.6em;
+}
+
+.questions--listing {
+  font-size: 1.667em;
+}
+
+table {
+  margin: 0 auto;
+	width: 90%;
+	border-collapse: collapse;
+}
+	/* Zebra striping */
+tr:nth-of-type(odd) {
+	background: #FFFAFA;
+}
+tr:nth-of-type(even) {
+	background: #F5F5F5;
+}
+th {
+	background: rgba(52, 152, 219,1.0);
+	color: #FFF;
+	font-weight: bold;
+}
+tr:hover {
+  transition: all .3s ease-in;
+  cursor: pointer;
+}
+td, th {
+	padding: 6px;
+	text-align: left;
+}
+
+	/*
+	Max width before this PARTICULAR table gets nasty
+	This query will take effect for any screen smaller than 760px
+	and also iPads specifically.
+	*/
+@media
+	only screen and (max-width: 760px),
+	(min-device-width: 768px) and (max-device-width: 1024px) {
+  h1 {text-shadow: none;}
+		/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+		/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+	tr {
+	}
+
+	td {
+			/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+	}
+
+	td:before {
+			/* Now like a table header */
+		position: absolute;
+			/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+    font-weight: bold;
+    text-align: center;
+	}
+
+		/*
+		Label the data
+		*/
+	td:nth-of-type(1):before {
+		content: "ID";
+	}
+
+	td:nth-of-type(2):before {
+		content: "Type";
+	}
+
+	td:nth-of-type(3):before {
+		content: "Prompt";
+	}
+
+	td:nth-of-type(4):before {
+		content: "Difficulty";
+	}
+
+	td:nth-of-type(5):before {
+		content: "Grade Level";
+	}
+
+	td:nth-of-type(6):before {
+		content: "Subjects";
+	}
+
+	td:nth-of-type(7):before {
+		content: "Tags";
+	}
+
+  td:nth-of-type(8):before {
+		content: "Actions";
+	}
+}
+
+	/* Smartphones (portrait and landscape) ----------- */
+@media only screen
+	and (min-device-width : 320px)
+	and (max-device-width : 480px) {
+	body {
+		padding: 0;
+		margin: 0;
+		width: 320px;
+	};
+}
+
+	/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+	body {
+		width: 495px;
+	};
+}
