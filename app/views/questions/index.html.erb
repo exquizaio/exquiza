@@ -1,8 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Questions</h1>
+<header class="question-header--index">
+  <h1 class="questions--listing">Listing Questions</h1>
+  <%= form_tag new_question_path, method: :get do %>
+    <%= select_tag :prompt_type, options_for_select(Prompt.all_types), prompt: "Select New Question Type" %>
+    <%= submit_tag "New Question", name: nil %>
+  <% end %>
+</header>
 
-<table>
+<table  style="text-align:center;">
   <thead>
     <tr>
       <th>ID</th>
@@ -20,7 +26,7 @@
     <% @questions.each do |question| %>
       <tr>
         <td><%= question.id %></td>
-        <td><%= question.prompt.class.type %></td>
+        <td><%= question.prompt.type_name %></td>
         <td><%= question.prompt.to_one_liner %></td>
         <td><%= question.difficulty %></td>
         <td><%= question.grade_level %></td>
@@ -33,10 +39,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= form_tag new_question_path, method: :get do %>
-  <%= select_tag :prompt_type, options_for_select(Prompt.accepted_types), prompt: "Select New Question Type" %>
-  <%= submit_tag "New Question", name: nil %>
-<% end %>

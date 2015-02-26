@@ -12,7 +12,6 @@
 class Prompt::KatexPrompt < ActiveRecord::Base
   include Prompt
   has_one :question, as: :prompt
-  type_for "katex"
 
   def self.params
     [:id, :content]
@@ -20,13 +19,5 @@ class Prompt::KatexPrompt < ActiveRecord::Base
 
   def to_s
     content.to_s
-  end
-
-  def type
-    "katex"
-  end
-
-  def self.type
-    "katex"
   end
 end

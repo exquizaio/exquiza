@@ -1,5 +1,5 @@
 <%= f.simple_fields_for :prompt do |prompt_form| %>
-<%= prompt_form.input :type, as: :hidden %>
+<%= prompt_form.input :type_name, as: :hidden %>
   <%= prompt_form.simple_fields_for :passage do |passage_prompt| %>
     <%= passage_prompt.input :title %>
     <%= passage_prompt.input :author %>

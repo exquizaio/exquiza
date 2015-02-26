@@ -1,6 +1,5 @@
-require "pathname"
-Pathname.glob("./prompt/*").each { |p| require "p" }
 module Prompt
+  mattr_reader(:prompts_path) { Rails.root + "app/models/prompt" }
 
   class << self
 
@@ -9,54 +8,63 @@ module Prompt
     end
 
     def for(type)
-      # return type if type_map.value?(type)
-      type_map[type]
+      Prompt.const_get("#{type.to_s.classify}Prompt")
+    rescue LoadError, NameError
+      raise ArgumentError, "Unknown Prompt: #{type}"
     end
 
-    def default
-      type_map.default
+    def load(class_or_type)
+      return class_or_type if class_or_type.include? Prompt
+      Prompt.const_get type.to_s.classify
     end
 
-    def default=(obj)
-      type_map.default = obj
+    def all
+      @@prompts ||= load_prompts
     end
 
-    def type_map
-      {"paragraph" => Prompt::ParagraphPrompt, "passage" => Prompt::PassagePrompt, "katex" => Prompt::KatexPrompt}
-    end
-
-    def setup_type_map
-      HashWithIndifferentAccess.new
-    end
-
-    def register_type(klass, string)
-      type_map[string] = klass
-    end
-
-    def register_types(klass, *strings)
-      strings.each {|s| register_type(klass, s) }
-    end
-
-    def types
-      type_map.values.uniq
-    end
-
-    def accepted_types
-      type_map.keys.uniq
+    def all_types
+      @@prompt_types ||= get_prompt_types
     end
 
     def params
-      type_map.values.flat_map(&:params).uniq.push(:type)
+      all.flat_map(&:params).uniq.push(:type_name)
     end
+
+    private
+
+    def prompt_files
+      @@prompt_files ||= Pathname.glob(prompts_path + "*_prompt.rb")
+    end
+
+    def get_prompt_types
+      prompt_files.map {|f| f.basename("_prompt.rb").to_s }
+    end
+
+    def load_prompts
+      all_types.map {|s| Prompt.for(s) }
+    end
+
+    def loaded_prompts
+      constants.select {|c| c.to_s.ends_with? "Prompt" }.map {|p| p.classify }
+    end
+
+  end
+
+  def type_name
+    self.class.type_name
+  end
+
+  def type_name=(new_type)
+    #To Satisfy Update Action
   end
 
   module ClassMethods
-    def type_for(*objects)
-      # Prompt.register_types(self, *objects)
+    def type_name
+      model_name.human.split(" ").first
     end
 
-    def associated_types
-      Prompt.type_map.select {|k,v| self == v }.keys
+    def acts_as_promptable?
+      true
     end
   end
 end

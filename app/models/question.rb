@@ -27,10 +27,10 @@ class Question < ActiveRecord::Base
 
   validates_presence_of :tag_list, :subject_list
   validates :difficulty,
-    inclusion: { within: 0..100 },
+    inclusion: { within: 0..100, message: "must be between 0 and 100" },
     presence: true
   validates :grade_level,
-    inclusion: { within: 0..12 },
+    inclusion: { within: 0..12, message: "must be within 0 to 12" },
     presence: true
 
   def answer
@@ -38,9 +38,8 @@ class Question < ActiveRecord::Base
   end
 
   def build_prompt(params)
-    type = params.delete(:type)
-    puts type
-    self.prompt = Prompt.type_map[type].new(params)
+    type = params.delete(:type_name)
+    self.prompt = Prompt.for(type).new(params)
   end
 
   def score(selected_choice, some_choices)

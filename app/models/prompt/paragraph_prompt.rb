@@ -12,7 +12,6 @@
 class Prompt::ParagraphPrompt < ActiveRecord::Base
   include Prompt
   has_one :question, as: :prompt
-  type_for "paragraph"
 
   def self.params
     [:id, :content]
@@ -20,13 +19,5 @@ class Prompt::ParagraphPrompt < ActiveRecord::Base
 
   def to_s
     content.to_s
-  end
-
-  def type
-    "paragraph"
-  end
-
-  def self.type
-    "paragraph"
   end
 end
