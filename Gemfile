@@ -11,14 +11,14 @@ gem "autoprefixer-rails"
 gem 'draper', '~> 1.3'
 gem "lograge"
 gem 'simple_form'
-
+gem 'mysql2', '~> 0.3.16'
 # Use Unicorn as the app server
 gem 'unicorn'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 # Use sqlite3 as the database for Active Record
-gem 'mysql2', '~> 0.3.16'
+gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
