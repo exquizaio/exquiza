@@ -22,8 +22,3 @@ test:
 
 production:
   <<: *default
-  database: exquiza_production
-  username: exquiza
-  password: <%= ENV['RDS_PASSWORD'] %>
-  host: <%= ENV['RDS_HOST'] %>
-  port: <%= ENV['RDS_PORT'] %>
