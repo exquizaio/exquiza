@@ -13,7 +13,7 @@ Rails.application.configure do
 
   #Lograge logging configuration
   config.lograge.tap do |l|
-    l.enabled = false
+    l.enabled = true
     l.custom_options = lambda do |event|
       params = event.payload[:params].reject do |k|
         ['controller', 'action'].include? k
