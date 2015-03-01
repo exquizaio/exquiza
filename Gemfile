@@ -12,6 +12,8 @@ gem 'draper', '~> 1.3'
 gem "lograge"
 gem 'simple_form'
 gem 'mysql2', '~> 0.3.16'
+gem "paperclip", "~> 4.2"
+
 # Use Unicorn as the app server
 gem 'unicorn'
 
