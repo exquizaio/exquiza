@@ -14,6 +14,7 @@ gem 'simple_form'
 gem 'mysql2', '~> 0.3.16'
 gem "paperclip", "~> 4.2"
 gem 'pry-rails'
+gem 'aws-sdk'
 
 # Use Unicorn as the app server
 gem 'unicorn'
