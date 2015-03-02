@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150222132100) do
+ActiveRecord::Schema.define(version: 20150302001916) do
 
   create_table "choices", force: :cascade do |t|
     t.text     "content"
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(version: 20150222132100) do
 
   add_index "choices", ["question_id"], name: "index_choices_on_question_id"
   add_index "choices", ["response_id"], name: "index_choices_on_response_id"
+
+  create_table "image_prompts", force: :cascade do |t|
+    t.integer  "question_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "image_prompts", ["question_id"], name: "index_image_prompts_on_question_id"
 
   create_table "katex_prompts", force: :cascade do |t|
     t.text     "content"
