@@ -1,0 +1,4 @@
+<%= f.simple_fields_for :prompt do |prompt_form| %>
+  <%= prompt_form.input :type_name, as: :hidden %>
+  <%= prompt_form.file_field :image %>
+<% end %>
