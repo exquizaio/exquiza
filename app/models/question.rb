@@ -22,7 +22,7 @@ class Question < ActiveRecord::Base
   belongs_to  :prompt, polymorphic: true
   has_many :responses
 
-  accepts_nested_attributes_for :prompt, allow_destroy: true
+  accepts_nested_attributes_for :prompt
   accepts_nested_attributes_for :choices, allow_destroy: true
 
   validates_presence_of :tag_list, :subject_list
