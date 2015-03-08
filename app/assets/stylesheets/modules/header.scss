@@ -31,6 +31,12 @@ $header-bg-color: map-get($pink, "darken-1");
       text-align: right;
     }
   }
+
+  &-list {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
 }
 
 $header-button-bg-color: map-get($pink, "darken-3");
