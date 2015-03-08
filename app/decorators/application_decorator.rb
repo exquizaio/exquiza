@@ -16,7 +16,7 @@ class ApplicationDecorator < Draper::Decorator
     puts h.user_signed_in?
     h.unordered_list class: "site-nav site-header-list site-header-box site-header-box--alpha" do
       [].tap do |b|
-        b << h.content_tag(:li, questions_index_button, class: "site-nav-item")if h.current_user.admin?
+        b << h.content_tag(:li, questions_index_button, class: "site-nav-item") if h.user_signed_in? and h.current_user.admin?
         b << h.content_tag(:li, tests_index_button, class: "site-nav-item") if h.user_signed_in?
       end.join.html_safe
     end
