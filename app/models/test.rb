@@ -58,7 +58,7 @@ class Test < ActiveRecord::Base
   end
 
   def percent_correct
-    (responses.correct_responses.length / questions.count.to_f) * 100
+    (responses.correct_responses.count.to_f / questions.count.to_f) * 100
   end
 
 end
