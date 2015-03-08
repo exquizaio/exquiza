@@ -1,10 +1,15 @@
 
 .Page--Question {
+  html {
+    background-color: #eceff1 !important;
+  }
   body {
     height: 100vh;
+    background-color: #eceff1 !important;
   }
   main {
     height: 100%;
+    background-color: #eceff1 !important;
 
     header + & {
       height: calc(100% - 2.3rem);
