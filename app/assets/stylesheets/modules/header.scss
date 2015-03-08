@@ -20,13 +20,15 @@ $header-bg-color: map-get($pink, "darken-1");
   align-items: center;
 
   &-box {
-    flex: 0 0 auto;
+    flex: 1 0 33%;
 
     &--alpha {
       order: -1;
+      text-align: left;
     }
     &--omega {
       order: 999;
+      text-align: right;
     }
   }
 }
