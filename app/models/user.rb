@@ -32,10 +32,9 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  
-  # Took out :registerable to prevent new users
+
   devise :database_authenticatable, :recoverable, :rememberable,
-         :trackable, :validatable
+         :trackable, :validatable, :registerable
 
 
   def can_view_report?(a_test)
