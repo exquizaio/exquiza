@@ -1,4 +1,4 @@
-<% content_for(:html) { 'class=".Page--Question"' } %>
+<% content_for(:html) { 'class=Page--Question' } %>
 
 <main>
   <section class="Question <%= @test.answered?(@question) ? "Question--answered" : "" %>">
@@ -11,7 +11,7 @@
         <dl class="Question-Info_List Info_List">
           <dt class="Info_List-Key Info_List-Key--question_count">Question</dt>
           <dd class="Info_List-Value Info_List-Value--question_count">
-            <span class="question_count--current"><%= @question.id %></span> / <span class="question_count--total">@test.test_configuration.number_of_questions</span>
+            <span class="question_count--current"><%= @test.position %></span> / <span class="question_count--total"><%= @test.test_configuration.number_of_questions %></span>
           </dd>
         </dl>
       </footer>
