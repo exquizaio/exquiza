@@ -37,4 +37,15 @@
       </div>
     </dl>
   </section>
+  <section class="Report-Tags">
+    <h2 class="Report-Tags-Heading">Tags</h2>
+    <dl class="Tag-List">
+      <% @test.responses.each_with_index do |r, i| %>
+      <div class="Tag-List-Item Box--<%= r.correct? ? 'Correct' : 'Wrong' %>">
+        <dt class="Tag-List-Question">Question #<%= i + 1 %></dt>
+        <dd class="Tag-List-Tags"><%= r.question.decorate.tag_pills %></dd>
+      </div>
+      <% end %>
+    </dl>
+  </section>
 </main>

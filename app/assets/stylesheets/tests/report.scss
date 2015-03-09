@@ -96,6 +96,48 @@ $red: rgb(231, 76, 60);
 
 }
 
+.Report-Tags {
+  background-color: white;
+  max-width: 40rem;
+  margin: auto;
+  padding: 0.5em;
+  &-Heading {
+    color: darken(#eceff1, 40%);
+    font-weight: lighter;
+    font-size: 1.5em;
+  }
+
+  .Tag-List {
+    &-Item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.25em;
+      border-bottom: 2px solid #eceff1;
+
+      &:first-child {
+        border-top: 2px solid #eceff1;
+      }
+    }
+  }
+}
+
+.tag-pill {
+  display: inline-block;
+  margin: 0.1em;
+  border-radius: 3px;
+  padding: 0.1em 0.2em;
+  color: #fff;
+  opacity: 0.9;
+
+  .Box--Correct & {
+    background-color: $green;
+  }
+  .Box--Wrong & {
+    background-color: $red;
+  }
+}
+
 .Site-Header {
   font-size: 2em;
   line-height: 1.3;
