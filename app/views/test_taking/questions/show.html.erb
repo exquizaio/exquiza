@@ -1,11 +1,11 @@
 <% content_for(:html) { 'class=".Page--Question"' } %>
 
 <main>
-  <section class="Question <%= @question.answered? ? "Question--answered" : "" %>">
+  <section class="Question <%= @test.answered?(@question) ? "Question--answered" : "" %>">
     <section class="Question-Content">
       <article class="Prompt-Wrapper">
         <p class="Question-Directions">Read the following prompt and select the most correct answer.</p>
-        <%= raw @question.prompt.to_tag %>
+        <%= render partial: prompt_partial_path(@question.prompt, "show"), locals: { prompt: @question.prompt } %>
       </article>
       <footer class="Question-Info-Wrapper pink lighten-3">
         <dl class="Question-Info_List Info_List">
@@ -20,7 +20,7 @@
       <% @question.choices.each do |c| %>
       <li class="Choice Choice--text" data-choice-id="<%= c.id %>">
         <%= c.to_s %>
-        <% if @question.answered? %><i class="Choice-Next Button--next"></i><% end %>
+        <i class="Choice-Next Button--next"></i>
       </li>
       <% end %>
     </ol>
