@@ -18,7 +18,7 @@
     </dl>
   </header>
   <section class="Report-Breakdown">
-    <h2 class="Report-Percentage"><%= @test.percent_correct %>%</h2>
+    <h2 class="Report-Percentage"><%= @test.correct_percentage %></h2>
     <ol class="Report-Bar">
       <% @test.responses.each_with_index do |r, i| %>
         <li class="Bar-Item Bar-Item--<%= r.correct? ? 'Correct' : 'Wrong' %>" title="Question #<%= i + 1 %>"></li>
