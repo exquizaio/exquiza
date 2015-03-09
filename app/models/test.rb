@@ -39,7 +39,7 @@ class Test < ActiveRecord::Base
   end
 
   def new_response(question, response_params)
-    a_response = responses.create!(selected_choice: Choice.where(id: response_params["selected_choice_id"]).first)
+    a_response = responses.create!(selected_choice: Choice.where(id: response_params["selected_choice_id"]).first, question: question)
     scored_response = question.score(a_response.selected_choice, question.choices)
     a_response.update_attributes(choices: question.choices, correct: a_response.selected_choice.answer?)
   end
