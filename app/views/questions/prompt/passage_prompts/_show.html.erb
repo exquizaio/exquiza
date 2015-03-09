@@ -1,11 +1,11 @@
-<article class="prompt--paragraph">
-  <header class="passage-header">
-    <h1 class="passage-title"><%= prompt.passage.title %></h1>
-    <p class="passage-author">By: <%= prompt.passage.author %></p>
-  </header>
-  <p class="passage-body">
-    <%= prompt.passage.body %>
-  </p>
+<article class="prompt--passage">
+  <article class="passage">
+    <header class="passage-header">
+      <h1 class="passage-title"><%= prompt.passage.title %></h1>
+      <small class="passage-author"><%= prompt.passage.author %></small>
+    </header>
+    <%= simple_format(prompt.passage.body, class: "passage-body") %>
+  </article>
   <p class="prompt-content">
     <%= prompt.content %>
   </p>
