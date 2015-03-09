@@ -8,7 +8,7 @@ class TestTaking::QuestionsController < ApplicationController
     if @test.position > @test.questions.size
       redirect_to complete_test_taking_test_path(@test)
     else
-      respond_with(@test, @question)
+      respond_with(@test, @question.decorate)
     end
   end
 
@@ -24,7 +24,7 @@ class TestTaking::QuestionsController < ApplicationController
   private
 
   def set_test
-    @test = current_user.tests.find(params[:test_id])
+    @test = current_user.tests.find(params[:test_id]).decorate
   end
 
   def set_test_questions

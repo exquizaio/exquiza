@@ -29,7 +29,7 @@ class TestTaking::TestsController < ApplicationController
   private
 
   def set_test
-    @test = current_user.tests.find(params[:id])
+    @test = current_user.tests.find(params[:id]).decorate
   end
 
   def test_params
