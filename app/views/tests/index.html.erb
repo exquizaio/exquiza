@@ -1,25 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Tests</h1>
+<header class="test-header--index">
+  <h1 class="tests--listing">Listing <%= current_user.admin? ? "All" : "Your" %> Tests</h1>
+  <%= link_to 'New Test', new_test_path if current_user.admin? %>
+</header>
 
 <table>
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>Test Name</th>
+      <th colspan="4">Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <% @tests.each do |test| %>
       <tr>
-        <td><%= link_to 'Show', test %></td>
-        <td><%= link_to 'Edit', edit_test_path(test) %></td>
-        <td><%= link_to 'Destroy', test, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="test-display-name"><%= test.decorate.display_name %></td>
+        <%= test.decorate.allowed_actions %>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Test', new_test_path %>
