@@ -44,9 +44,7 @@ class Question < ActiveRecord::Base
 
   def score(selected_choice, some_choices)
     correct_choice = some_choices.answers.first
-    #puts "A: " + correct_choice.id.inspect
-    #puts "B: " + selected_choice.id.inspect
-    #(selected_choice.id == correct_choice.id)
+    (selected_choice.id == correct_choice.id)
   end
 
 end
