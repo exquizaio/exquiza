@@ -4,6 +4,6 @@ module QuestionsHelper
   end
 
   def render_prompt(prompt)
-    raise NotImplementedError
+    render partial: "questions/#{prompt.model_name.collection}/show", locals: { prompt: @question.prompt }
   end
 end
