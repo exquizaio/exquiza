@@ -17,7 +17,7 @@ class QuestionDecorator < Draper::Decorator
   def subject_pills
     h.unordered_list class: "subject-list--pill" do
       model.subjects.collect {|c|
-        tag_pill(c)
+        subject_pill(c)
       }.join.html_safe
     end
   end
