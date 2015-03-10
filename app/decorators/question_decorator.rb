@@ -25,5 +25,4 @@ class QuestionDecorator < Draper::Decorator
   def subject_pill(tag, node: :li, **options)
     h.content_tag node, tag, class: "subject-pill", **options
   end
-
 end
