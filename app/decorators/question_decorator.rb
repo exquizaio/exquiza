@@ -15,7 +15,7 @@ class QuestionDecorator < Draper::Decorator
   end
 
   def subject_pills
-    h.unordered_list class: "tag-list--pill" do
+    h.unordered_list class: "subject-list--pill" do
       model.tags.collect {|c|
         tag_pill(c)
       }.join.html_safe
@@ -23,7 +23,7 @@ class QuestionDecorator < Draper::Decorator
   end
 
   def subject_pill(tag, node: :li, **options)
-    h.content_tag node, tag, class: "tag-pill", **options
+    h.content_tag node, tag, class: "subject-pill", **options
   end
 
 end
