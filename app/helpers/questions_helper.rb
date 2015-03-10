@@ -4,6 +4,6 @@ module QuestionsHelper
   end
 
   def render_prompt(prompt)
-    render partial: "questions/#{prompt.model_name.collection}/show", locals: { prompt: @question.prompt }
+    h.render partial: "questions/#{prompt.model_name.collection}/show", locals: { prompt: prompt }
   end
 end
