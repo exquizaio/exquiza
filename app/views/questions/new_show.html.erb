@@ -11,11 +11,11 @@
     </div>
     <div class="question-detail">
       <dt class="detail-name"><%= pluralize("Subject", question.subjects)%></dt>
-      <dd class-"detail-value"><%= pill_list question.subjects %></dd>
+      <dd class-"detail-value"><%= question.subjects_pill_list %></dd>
     </div>
     <div class="question-detail">
       <dt class="detail-name"><%= pluralize("Tag", question.tags)%></dt>
-      <dd class-"detail-value"><%= pill_list question.subjects %></dd>
+      <dd class-"detail-value"><%= question.tags_pill_list %></dd>
     </div>
   </dl>
 </header>
