@@ -1,5 +1,7 @@
 class QuestionsController < ApplicationController
   include URLHelper
+  include QuestionHelper
+  
   before_action :check_authorization
   before_action :set_question, only: [:edit, :show, :update, :destroy]
 
