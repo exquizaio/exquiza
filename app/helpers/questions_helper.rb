@@ -4,6 +4,6 @@ module QuestionsHelper
   end
 
   def render_prompt(prompt)
-
+    raise NotImplementedError
   end
 end
