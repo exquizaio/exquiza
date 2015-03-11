@@ -1,4 +1,5 @@
 class TestTaking::QuestionsController < ApplicationController
+  layout "test_taking"
   before_action :set_test
   before_action :set_test_questions
   before_action :set_question

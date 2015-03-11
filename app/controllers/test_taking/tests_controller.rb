@@ -1,4 +1,5 @@
 class TestTaking::TestsController < ApplicationController
+  layout "test_taking"
   before_action :set_test, only: [:show, :edit, :update, :destroy, :report, :complete, :start]
 
   def show
