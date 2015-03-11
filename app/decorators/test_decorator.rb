@@ -19,7 +19,7 @@ class TestDecorator < Draper::Decorator
     [].tap do |a|
       if h.current_user.admin?
         a << table_link_to('View Config', model)
-        a << table_link_to('Edit Config', h.edit_test_path(model))
+        a << table_link_to('Edit Config', h.edit_test_path(model)) unless model.started?
         a << table_link_to('Destroy', model, method: :delete, data: { confirm: 'Are you sure?' })
       end
       a << table_link_to("Start Test", h.start_test_taking_test_path(model)) if !test.started? and model.user == h.current_user
