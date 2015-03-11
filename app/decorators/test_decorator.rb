@@ -6,7 +6,7 @@ class TestDecorator < Draper::Decorator
   end
 
   def correct_percentage
-    h.number_to_percentage(model.percent_correct, precision: 2)
+    h.number_to_percentage(model.percent_correct, precision: 1)
   end
 
   def display_name
