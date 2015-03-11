@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html <%= yield :html %>>
+<html class="<%= controller.controller_path == "test_taking/questions" ? "Page--Question" : "" %>" >
 <head>
   <title>Exquiza</title>
   <meta name="viewport" content="width=device-width">
