@@ -24,7 +24,7 @@ class TestDecorator < Draper::Decorator
       end
       a << table_link_to("Start Test", h.start_test_taking_test_path(model)) if !model.started? and model.user == h.current_user
       a << table_link_to("Continue Test", h.start_test_taking_test_path(model)) if model.started? and !model.finished? and model.user == h.current_user
-      a << table_link_to("Report", h.test_report_path(model)) if model.finished?
+      a << table_link_to("Report", h.test_report_path(model)) if h.current_user.can_view_report(model)
     end.join.html_safe
   end
 
