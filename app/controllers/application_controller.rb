@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   helper ApplicationHelper
+  include URLHelper
   before_action :authenticate_user!
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
