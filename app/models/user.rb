@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
 
 
   def can_view_report?(a_test)
-    a_test.finished? and (a_test.user == self or user.admin?)
+    a_test.finished? and (a_test.user == self or admin?)
   end
 
   def full_name
