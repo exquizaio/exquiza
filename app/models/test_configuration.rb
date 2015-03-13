@@ -42,7 +42,7 @@ class TestConfiguration < ActiveRecord::Base
     min_grade_level..max_grade_level
   end
 
-  def build_query
+  def question_query
     {
       difficulty: difficulty_range,
       grade_level: grade_level_range
@@ -50,12 +50,11 @@ class TestConfiguration < ActiveRecord::Base
   end
 
   def build_questions
-
-    Question.all.shuffle.first(number_of_questions)
+    tagged_questions.where(**question_query).take(number_of_questions)
   end
 
-  def with_tags
-    tagged_with(subject_list, on: :subjects, any: true).tagged_with(tag_list, on: :tags, any: true)
+  def tagged_questions
+    Question.tagged_with(subject_list, on: :subjects, any: true).tagged_with(tag_list, on: :tags, any: true)
   end
 
 end
