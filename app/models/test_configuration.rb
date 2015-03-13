@@ -50,6 +50,12 @@ class TestConfiguration < ActiveRecord::Base
   end
 
   def build_questions
+    find_questions.tap do |q|
+      update_attributes(number_of_questions: q.length)
+    end
+  end
+
+  def find_questions
     tagged_questions.where(**question_query).take(number_of_questions)
   end
 
