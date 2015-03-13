@@ -60,7 +60,11 @@ class TestConfiguration < ActiveRecord::Base
   end
 
   def tagged_questions
-    Question.tagged_with(subject_list, on: :subjects, any: true).tagged_with(tag_list, on: :tags, any: true)
+    unless subject_list.empty?
+      Question.tagged_with(subject_list, on: :subjects, any: true).tagged_with(tag_list, on: :tags, any: true)
+    else
+      Question.tagged_with(tag_list, on: :tags, any: true)
+    end
   end
 
 end
