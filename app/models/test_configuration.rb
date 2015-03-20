@@ -60,11 +60,11 @@ class TestConfiguration < ActiveRecord::Base
   end
 
   def tagged_questions
-    unless subject_list.empty?
-      Question.tagged_with(subject_list, on: :subjects, any: true).tagged_with(tag_list, on: :tags, any: true)
-    else
-      Question.tagged_with(tag_list, on: :tags, any: true)
-    end
+    { subjects: subject_list, tags: tag_list }
+      .delete_if { |key, value| value.empty? }
+      .reduce(Question) do
+        |q, (name, list)|
+        q.by_tag_list(list, name: name, default: q)
+      end
   end
-
 end
