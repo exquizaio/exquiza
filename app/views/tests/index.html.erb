@@ -9,6 +9,7 @@
   <thead>
     <tr>
       <th>Test Name</th>
+      <th>Question</th>
       <th colspan="4">Actions</th>
     </tr>
   </thead>
@@ -17,6 +18,7 @@
     <% @tests.each do |test| %>
       <tr>
         <td class="test-display-name"><%= test.decorate.display_name %></td>
+        <td><%= test.decorate.current_question %></td>
         <%= test.decorate.allowed_actions %>
       </tr>
     <% end %>

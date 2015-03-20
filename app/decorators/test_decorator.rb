@@ -15,6 +15,10 @@ class TestDecorator < Draper::Decorator
     string
   end
 
+  def current_question
+    "#{ model.position }/#{ model.test_configuration.number_of_questions }"
+  end
+
   def allowed_actions
     [].tap do |a|
       if h.current_user.admin?
