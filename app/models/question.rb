@@ -47,4 +47,9 @@ class Question < ActiveRecord::Base
     (selected_choice.id == correct_choice.id)
   end
 
+  def self.by_tag_list(list, name: :tags, default: Question, **options)
+    results = Question.tagged_with(list, on: name, **options)
+    results.empty? ? default : results
+  end
+
 end
