@@ -8,12 +8,12 @@
         <dd class="Details--Value"><%= @test.user.full_name %></dd>
       </div>
       <div class="Details--Start">
-        <dt class="Details--Key">Started</dt>
-        <dd class="Details--Value"><%= @test.started_on %></dd>
+        <dt class="Details--Key">Duration</dt>
+        <dd class="Details--Value"><%= @test.duration %></dd>
       </div>
       <div class="Details--Finish">
-        <dt class="Details--Key">Finished</dt>
-        <dd class="Details--Value"><%= @test.finished_on %></dd>
+        <dt class="Details--Key">Number of Questions</dt>
+        <dd class="Details--Value"><%= @test.test_configuration.number_of_questions %></dd>
       </div>
     </dl>
   </header>
