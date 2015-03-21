@@ -67,4 +67,12 @@ class TestConfiguration < ActiveRecord::Base
         q.by_tag_list(list, name: name, default: q)
       end
   end
+
+  def found_question_count
+    @found_question_count ||= find_questions.count
+  end
+
+  def is_criteria_possible?
+    found_question_count >= number_of_questions
+  end
 end
