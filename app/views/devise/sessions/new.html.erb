@@ -15,12 +15,12 @@
 
       <div class="actions field signin-field">
         <% if devise_mapping.rememberable? -%>
-        <div>
+        <div class="signin-field--checkbox">
           <%= f.check_box :remember_me %>
           <%= f.label :remember_me, class: "signin-remember-me" %>
         </div>
         <% end -%>
-        <%= f.submit "Sign In", class: "signin-button" %>
+        <%= f.submit "Sign In", class: "signin-button button" %>
       </div>
     </section>
     <% end %>
