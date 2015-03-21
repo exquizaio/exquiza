@@ -56,7 +56,7 @@ class TestConfiguration < ActiveRecord::Base
   end
 
   def find_questions
-    tagged_questions.order("RANDOM()").where(**question_query)
+    tagged_questions.order(random_order).where(**question_query)
   end
 
   def tagged_questions
@@ -74,5 +74,11 @@ class TestConfiguration < ActiveRecord::Base
 
   def is_criteria_possible?
     found_question_count >= number_of_questions
+  end
+
+  private
+
+  def random_order
+    Rails.env.production? ? "RAND()" : "RANDOM()"
   end
 end
