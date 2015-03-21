@@ -1,0 +1,18 @@
+@import "variables";
+
+.site-footer {
+  margin-top: 0.25em;
+  text-align: center;
+  border-top: 0.5px solid #fafafa;
+  color: map-get($blue-grey, "lighten-2");
+  opacity: 0.75;
+  a {
+    color: map-get($blue-grey, "lighten-1");
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
