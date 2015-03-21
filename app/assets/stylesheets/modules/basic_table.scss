@@ -1,3 +1,5 @@
+@import "variables";
+
 body {
   background-color: white;
 }
@@ -25,7 +27,7 @@ tr:nth-of-type(even) {
 	background: #F5F5F5;
 }
 th {
-	background: rgba(52, 152, 219,1.0);
+	background: $primary-blue;
 	color: #FFF;
 	font-weight: bold;
 }

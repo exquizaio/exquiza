@@ -1,6 +1,6 @@
 @import "variables";
 
-$header-bg-color: map-get($pink, "darken-1");
+$header-bg-color: $primary-pink;
 
 @mixin anchor-reset {
   text-decoration: none;
