@@ -13,6 +13,8 @@
 *= require reset
 *= require_self
 *= require variables
+*= require errors
+*= require alerts
 *= require_tree ./modules
 *= require_tree ./tests
 *= require_tree ./prompts
