@@ -8,7 +8,7 @@
     background-color: #eceff1 !important;
   }
   main {
-    height: calc(100% - 3.3rem);
+    height: calc(100% - 2.5rem);
     background-color: #eceff1 !important;
   }
 }
@@ -20,6 +20,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     align-content: stretch;
+    align-items: stretch;
     padding: 1rem;
 
     & > * {
@@ -28,12 +29,16 @@
   }
   .Question-Content {
     position: relative;
-    flex: 3 1 20rem;
+    min-height: 50%;
+    flex: 6 1 30rem;
     background-color: white;
+    @media only screen and (max-height: 20em) {
+        flex-basis: 30vw;
+    }
   }
 
   .Choice_List {
-    flex: 2 0 20rem;
+    flex: 5 0 20rem;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -80,22 +85,40 @@
   }
 
   .Choice {
+    min-height: 2em;
     font-size: 1.4em;
-    flex: 1 1 4em;
+    flex: 1 0 auto;
     border-bottom: 1px solid fade(black, 10%);
     background-color: white;
     transition-duration: 0.5s;
     text-align: center;
     vertical-align: middle;
-    line-height: 5em;
     margin: 0.5rem 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 0.33em;
 
     &:hover{
       cursor: pointer;
       background-color: rgb(245, 245, 245);
+    }
+    @media only screen and (max-height: 30em) {
+        background-color: orange;
+        font-size: 1.1em;
+        flex-shrink: 1;
+        flex-basis: 40%;
+    }
+    @media only screen and (max-height: 30em) {
+      max-width: 50%;
+    }
+    @media only screen and (max-height: 15em) {
+      font-size: 1em;
+    }
+
+    &--paragraph {
+
+
     }
 
     &-Next{
@@ -167,45 +190,48 @@
       transition-delay: 0.1s;
       transform: scale(1.1, 1.1);
     }
+
+    @media only screen and (max-width: 47em) {
+        margin: 0 0 1rem;
+    }
   }
 
-  @media screen and (max-width: 60em) {
+  @media screen and (max-width: 56em) {
     body {
       font-size: 100%;
+    }
+    .Choice_List {
+      flex-direction: row;
+      justify-content: space-around;
+      align-content: stretch;
+      align-items: stretch;
+      margin: 1rem;
+
+      .Choice {
+        flex: 1 0 15em;
+        max-height: 6rem;
+        min-height: 2.5em;
+        &.margin{
+          margin: 0.5em 0;
+          padding: 1em;
+        }
+      }
     }
   }
   @media screen and (max-width: 700px), (orientation: portrait) {
     .Page--Question body {
-      height: auto;
+      //height: auto;
+      //min-height: 100vh;
       overflow-y: scroll;
-      padding-bottom: 2em;
     }
     .Page--Question main {
-      height: 100%;
+      //height: 100%;
+      //min-height: 100vh;
     }
     .Question {
-      height: 100%;
       padding: 1rem;
-      display: block;
-
-      &-Content {
-        min-height: 50vh;
-      }
     }
-    .Choice_List {
-      flex-direction: row;
-      justify-content: space-between;
-      align-content: space-around;
-      margin: 1rem;
 
-      .Choice {
-        flex: 1 0 10em;
-        max-height: 6rem;
-        &.margin{
-          margin: 0 1.5rem;
-        }
-      }
-    }
   }
   @media screen and (max-width: 400px) {
     body {
