@@ -9,6 +9,10 @@ class TestDecorator < Draper::Decorator
     h.number_to_percentage(model.percent_correct, precision: 1)
   end
 
+  def duration
+    h.distance_of_time_in_words(model.started_on, model.finished_on)
+  end
+
   def display_name
     string = "Test ##{model.id}"
     string.prepend("#{model.user.full_name} ") if h.current_user.admin?
