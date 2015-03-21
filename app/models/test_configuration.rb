@@ -56,7 +56,7 @@ class TestConfiguration < ActiveRecord::Base
   end
 
   def find_questions
-    tagged_questions.where(**question_query)
+    tagged_questions.order("RANDOM()").where(**question_query)
   end
 
   def tagged_questions
