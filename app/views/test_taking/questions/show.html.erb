@@ -16,7 +16,7 @@
     </section>
     <ol class="Choice_List">
       <% @question.choices.each do |c| %>
-      <li class="Choice Choice--text" data-choice-id="<%= c.id %>">
+      <li class="Choice <%= c.decorate.length_css_class %>" data-choice-id="<%= c.id %>">
         <%= c.to_s %>
         <i class="Choice-Next Button--next"></i>
       </li>

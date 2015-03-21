@@ -1,6 +1,7 @@
 class QuestionDecorator < Draper::Decorator
   delegate_all
   decorates_association :prompt
+  decorate_collection :choices
 
   def tag_pills
     h.unordered_list class: "tag-list--pill" do
