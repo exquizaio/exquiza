@@ -1,7 +1,13 @@
-<p id="notice"><%= notice %></p>
+<% unless flash.empty? %>
+<div class="flash-box">
+  <% flash.each do |name, msg|%>
+    <%= content_tag :div, msg, class: "alert-box" %>
+  <% end -%>
+</div>
+<% end %>
 
-<header class="question-header--index">
-  <h1 class="questions--listing">Listing Questions</h1>
+<header class="question-header--index question-header page-header">
+  <h1 class="questions-heading page-heading">Listing Questions</h1>
   <%= form_tag new_question_path, method: :get do %>
     <%= select_tag :prompt_type, options_for_select(Prompt.all_types), prompt: "Select New Question Type" %>
     <%= submit_tag "New Question", name: nil %>
