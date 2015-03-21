@@ -54,7 +54,7 @@ RSpec.describe TestConfiguration, type: :model do
 
     def new_config(tags:, subjects:)
       $config = tag_model new_test_config, subjects: subjects, tags: tags
-      $questions = $config.build_questions
+      $questions = $config.get_questions
       $tags = $questions.flat_map { |q| q.tag_list }.uniq
       $subjects = $questions.flat_map { |q| q.subject_list }.uniq
     end

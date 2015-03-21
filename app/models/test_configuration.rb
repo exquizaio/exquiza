@@ -49,8 +49,8 @@ class TestConfiguration < ActiveRecord::Base
     }
   end
 
-  def build_questions
-    find_questions.tap do |q|
+  def get_questions
+    find_questions.take(number_of_questions).tap do |q|
       update_attributes(number_of_questions: q.length)
     end
   end

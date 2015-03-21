@@ -49,7 +49,7 @@ class Test < ActiveRecord::Base
   end
 
   def generate_questions
-    update_attributes(questions: test_configuration.build_questions)
+    update_attributes(questions: test_configuration.get_questions)
   end
 
   def next_question
