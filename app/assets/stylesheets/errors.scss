@@ -1,0 +1,28 @@
+.errors-explanation {
+  padding-bottom: 1em;
+  .errors-heading {
+    font-size: 1.5em;
+    color: red;
+
+    & + .errors-list {
+    }
+  }
+}
+
+.errors-list {
+  list-style-type: disc;
+  color: red;
+  margin-left: 2em;
+  .error {
+
+  }
+}
+
+.field_with_errors {
+  label {
+    color: red;
+  }
+  .error {
+    display: none;
+  }
+}
