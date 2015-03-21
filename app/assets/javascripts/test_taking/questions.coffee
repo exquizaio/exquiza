@@ -5,6 +5,8 @@
 $('.Choice').click (event) ->
   $('.Choice_List').addClass('active')
   $('.Choice').removeClass('active').removeClass('margin')
+  $id = $(this).data("choice-id");
+  console.log("Choice ##{$id} Selected")
   $('.Button--next').fadeOut(300)
   $(this).addClass('active').addClass('margin')
   $('.Button--next', this).delay(700).fadeIn(300)
@@ -24,13 +26,15 @@ sendResponse = (id) ->
   }
   form = makeForm()
   form.append answer
-  form.submit()
-  console.log("Question ##{id} Selected")
+  console.log("Choice ##{id} Choosen")
+  form.appendTo("body").submit()
 
 
 makeForm = ->
+  $("form.choice-form").remove()
   form = $ "<form>", {
     method: "post",
+    class: "choice-form"
     action: "#{window.location.pathname}/respond",
     }
   utfInput = makeInput {
