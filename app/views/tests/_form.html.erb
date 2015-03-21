@@ -1,27 +1,27 @@
 <%= form_for(@test) do |f| %>
   <% if @test.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@test.errors.count, "error") %> prohibited this test from being saved:</h2>
+    <div class="errors-explanation">
+      <h2 class="errors-heading">Errors</h2>
 
-    <ul>
-      <% @test.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
+      <ul class="errors-list">
+        <% @test.errors.full_messages.each do |message| %>
+        <li class="error"><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :user %>
+    <%= f.select :user_id, User.all.collect {|u| [ u.full_name, u.id ] } %>
   </div>
-<% end %>
 
-<div>
-  <%= f.label :user %>
-  <%= f.select :user_id, User.all.collect {|u| [ u.full_name, u.id ] } %>
-</div>
+  <p>
+    Any blank values will not be used to generate the questions.
+  </p>
+  <%= render partial: 'tests/test_configuration/form', object: f %>
 
-<p>
-  Any blank values will not be used to generate the questions.
-</p>
-<%= render partial: 'tests/test_configuration/form', object: f %>
-
-<div class="actions">
-  <%= f.submit %>
-</div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>
