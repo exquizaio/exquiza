@@ -40,3 +40,16 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.page-header {
+  text-align: center;
+  font-size: 1.2em;
+  margin: 0.85em 0.5em 0.6em;
+}
+
+.question-header--index, .test-header--index {
+}
+
+.questions--listing, .tests--listing, .page-heading {
+  font-size: 1.667em;
+}
