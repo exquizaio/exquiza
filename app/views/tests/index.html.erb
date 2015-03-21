@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<header class="test-header--index">
-  <h1 class="tests--listing">Listing <%= current_user.admin? ? "All" : "Your" %> Tests</h1>
+<header class="test-header--index test-header page-header">
+  <h1 class="page-heading">Listing <%= current_user.admin? ? "All" : "Your" %> Tests</h1>
   <%= link_to 'New Test', new_test_path if current_user.admin? %>
 </header>
 
