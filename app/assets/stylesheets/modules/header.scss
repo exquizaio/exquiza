@@ -52,6 +52,12 @@ $header-button-hover-bg-color: map-get($pink, "darken-4");
   &:hover {
     background-color: $header-button-hover-bg-color;
   }
+  @media only screen
+  	and (min-device-width : 320px)
+  	and (max-device-width : 480px) {
+      font-size: 0.75em;
+      padding: 0.35em 0.583em;
+  }
 }
 
 .site-header-logo--text {
