@@ -28,6 +28,8 @@ class Test < ActiveRecord::Base
   has_one :test_configuration
 
   accepts_nested_attributes_for :test_configuration
+  
+  validates_with CriteriaPossibleValidator
 
   def start!
     update_attributes(started: true, started_on: Time.now, position: 1)
