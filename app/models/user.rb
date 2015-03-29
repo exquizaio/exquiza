@@ -41,6 +41,10 @@ class User < ActiveRecord::Base
     a_test.finished? and (a_test.user == self or admin?)
   end
 
+  def can_download_report?(a_test)
+    can_view_report?(a_test) and admin?
+  end
+
   def full_name
     first_name.capitalize + " " + last_name.capitalize
   end
