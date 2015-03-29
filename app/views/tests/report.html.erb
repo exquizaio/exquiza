@@ -1,5 +1,13 @@
 
 <main class="Report">
+  <% if current_user.can_download_report?(@test) %>
+  <section class="Report-Download">
+    <h2 class="Report-Download-Text">Download:</h2>
+    <ul class="Report-Download-Types">
+      <li class="Download-Type Download-Type--Excel"><%= link_to 'Spreadsheet', test_report_path(@test, format: :xlsx) %></li>
+    </ul>
+  </section>
+  <% end %>
   <header class="Report-Header">
     <h1 class="Report-Header-Title">Report</h1>
     <dl class="Report-Details">

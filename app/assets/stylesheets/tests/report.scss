@@ -13,12 +13,49 @@ $red: rgb(231, 76, 60);
     align-items: center;
   }
   &-Header {
-    margin: 2rem auto 1rem;
+    margin: 1rem auto;
     text-align: center;
 
     &-Title {
       font-size: 4em;
       font-weight: lighter;
+    }
+  }
+}
+
+.Report-Download {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  width: 15em;
+  margin: auto;
+  background-color: white;
+  padding: 0.35rem;
+  font-size: 1em;
+  cursor: pointer;
+
+  &-Text {
+    color: #778c9a;
+    margin-right: 0.4em;
+  }
+
+  .Download-Type {
+    border-radius: 2px;
+    padding: 0.3em;
+    border: 2px solid lighten(#778c9a, 40%);
+    a {
+      color: #778c9a;
+      text-decoration: none;
+
+    }
+
+    &:hover {
+      background-color: lighten(#778c9a, 20%);
+      border: 2px solid lighten(#778c9a, 20%);
+      a {
+        color: white;
+      }
     }
   }
 }
