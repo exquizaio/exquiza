@@ -59,10 +59,24 @@ class TestsController < ApplicationController
   end
 
   def report
-    if current_user.can_view_report?(@test)
-      respond_with(@test)
-    else
-      redirect_back_or_to path: tests_path, error: "You cannot view this report"
+    respond_to do |format|
+      if current_user.can_view_report?(@test)
+        format.html
+        format.json { render json: @test }
+        format.xml { render xml: @test }
+        format.xlsx do
+          if current_user.can_download_report?(@test)
+            filename = [@test.user.first_name.downcase, @test.user.last_name.downcase, "report"].join("_").concat(".xlsx")
+            render xlsx: "report", filename: filename
+          else
+            render @test, error: "You cannot download this report."
+          end
+        end
+      else
+        format.html { redirect_back_or_to path: tests_path, error: "You cannot view this report" }
+        format.json { render json: {error: "You cannot view this report"}, status: :unauthorized }
+        format.xml { render xml: {error: "You cannot view this report"}, status: :unauthorized }
+      end
     end
   end
 
