@@ -15,6 +15,9 @@ gem 'mysql2', '~> 0.3.16'
 gem "paperclip", "~> 4.2"
 gem 'pry-rails'
 
+gem 'axlsx', '~> 2.0'
+gem "axlsx_rails"
+
 # Use Unicorn as the app server
 gem 'unicorn'
 
