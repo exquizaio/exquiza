@@ -1,0 +1,29 @@
+
+head_styles = { bg_color: "D81B60", fg_color: "000000", sz: 16, alignment: { horizontal: :center, vertical: :center } }
+green_styles = { bg_color: "74E678", fg_color: "FFFFFF" }
+red_styles = { bg_color: "EA776B", fg_color: "FFFFFF" }
+
+wb = xlsx_package.workbook
+wb.styles do |s|
+  head = s.add_style **head_styles
+  green = s.add_style **green_styles
+  red =  s.add_style  **red_styles
+  none =  s.add_style
+
+  wb_name = @test.user.full_name + " Report"
+
+  wb.add_worksheet(name: wb_name) do |sheet|
+
+    sheet.add_row [" # ", " Selected Answer ", " Correct "], style: head, types: :string
+
+    @test.responses.each.with_index do |response, index|
+      style = response.correct? ? green : red
+      sheet.add_row [index + 1, response.selected_choice.id, response.correct?], style: style
+    end
+
+    correct_responses = @test.responses.correct_responses
+    wrong_responses = @test.responses.wrong_responses
+    sheet.add_row [" Total ", correct_responses.size, wrong_responses.size], style: [none, green, red], types: [:string, :integer, :integer]
+  end
+
+end
