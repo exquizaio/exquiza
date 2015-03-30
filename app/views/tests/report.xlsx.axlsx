@@ -18,6 +18,7 @@ wb.styles do |s|
 
     @test.responses.each.with_index do |response, index|
       style = response.correct? ? green : red
+      id = response.selected_choice.present? ? response.selected_choice.id : %w(A B C D).sample
       sheet.add_row [index + 1, response.selected_choice.id, response.correct?], style: style
     end
 
