@@ -28,8 +28,20 @@ class Test < ActiveRecord::Base
   has_one :test_configuration
 
   accepts_nested_attributes_for :test_configuration
-  
+
   validates_with CriteriaPossibleValidator
+
+  def been_answered?(question)
+    responses.where(question: question).present?
+  end
+
+  def start
+    start! unless started?
+  end
+
+  def complete
+    finished? ? true : complete!
+  end
 
   def start!
     update_attributes(started: true, started_on: Time.now, position: 1)
@@ -56,6 +68,10 @@ class Test < ActiveRecord::Base
 
   def next_question
     update_attributes(position: position + 1)
+    position
+  end
+
+  def current_question
     position
   end
 
