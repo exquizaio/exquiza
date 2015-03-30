@@ -19,8 +19,12 @@ class TestDecorator < Draper::Decorator
     string
   end
 
-  def current_question
-    "#{ model.position }/#{ model.test_configuration.number_of_questions }"
+  def current_test_position
+    if model.finished?
+      "Done"
+    else
+      "#{ model.position }/#{ model.test_configuration.number_of_questions }"
+    end
   end
 
   def allowed_actions
