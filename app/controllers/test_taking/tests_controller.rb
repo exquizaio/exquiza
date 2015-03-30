@@ -11,12 +11,12 @@ class TestTaking::TestsController < ApplicationController
   end
 
   def start
-    @test.start!
-    redirect_to test_taking_test_question_path(@test, @test.position)
+    @test.start
+    redirect_to test_taking_test_question_path(@test, @test.current_question)
   end
 
   def complete
-    if @test.complete!
+    if @test.complete
       redirect_to test_report_path(@test)
     else
       redirect_back_or_to path: test_path(@test), error: "The test could not be completed"
