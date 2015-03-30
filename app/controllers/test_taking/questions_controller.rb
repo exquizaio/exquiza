@@ -9,7 +9,11 @@ class TestTaking::QuestionsController < ApplicationController
     if @test.position > @test.questions.size
       redirect_to complete_test_taking_test_path(@test)
     else
-      respond_with(@test, @question.decorate)
+      if @test.been_answered?(@question)
+        redirect_to test_taking_test_question_path(@test, @test.current_question)
+      else
+        respond_with(@test, @question.decorate)
+      end
     end
   end
 
