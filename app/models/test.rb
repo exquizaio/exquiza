@@ -52,6 +52,10 @@ class Test < ActiveRecord::Base
     update_attributes(finished: true, finished_on: Time.now)
   end
 
+  def should_complete?
+    position > questions.size
+  end
+
   def new_response(question, response_params)
     a_response = responses.create!(selected_choice: Choice.find(response_params["selected_choice_id"]), question: question)
     scored_response = question.score(a_response.selected_choice, question.choices)

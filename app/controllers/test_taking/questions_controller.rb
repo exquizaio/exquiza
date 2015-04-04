@@ -6,15 +6,9 @@ class TestTaking::QuestionsController < ApplicationController
 
   respond_to :html
   def show
-    if @test.position > @test.questions.size
-      redirect_to complete_test_taking_test_path(@test)
-    else
-      if @test.been_answered?(@question)
-        redirect_to test_taking_test_question_path(@test, @test.current_question)
-      else
-        respond_with(@test, @question.decorate)
-      end
-    end
+    return redirect_to complete_test_taking_test_path(@test) if  @test.should_complete?
+    return redirect_to test_taking_test_question_path(@test, @test.current_question) if @test.been_answered? @question
+    respond_with(@test, @question.decorate)
   end
 
   def url_options
