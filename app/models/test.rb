@@ -59,7 +59,7 @@ class Test < ActiveRecord::Base
   end
 
   def can_show_response?(question)
-    responses.find(question_id: question.id) and test.finished?
+    responses.find(question_id: question.id) and finished?
   end
 
   def generate_questions
