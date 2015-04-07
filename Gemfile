@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'newrelic_rpm'
+
 gem 'devise'
 gem 'rails_admin'
 gem 'cancancan', '~> 1.10'
