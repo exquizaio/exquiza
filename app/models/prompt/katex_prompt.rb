@@ -20,4 +20,8 @@ class Prompt::KatexPrompt < ActiveRecord::Base
   def to_s
     content.to_s
   end
+
+  def to_html_tag
+    Prompt::KatexPromptDecorator.decorate(self).to_html_tag
+  end
 end
