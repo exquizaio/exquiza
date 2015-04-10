@@ -15,6 +15,10 @@ class TestTaking::TestsController < ApplicationController
     redirect_to test_taking_test_question_path(@test, @test.current_question)
   end
 
+  def continue
+    redirect_to test_taking_test_question_path(@test, @test.current_question)
+  end
+
   def complete
     if @test.complete
       redirect_to test_report_path(@test)
