@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       member do
         get 'start'
         get 'complete'
+        get 'continue'
       end
       resources :questions, only: [:show] do
         member do
