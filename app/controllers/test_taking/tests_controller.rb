@@ -1,6 +1,6 @@
 class TestTaking::TestsController < ApplicationController
   layout "test_taking"
-  before_action :set_test, only: [:show, :edit, :update, :destroy, :report, :complete, :start]
+  before_action :set_test, only: [:show, :edit, :update, :destroy, :report, :complete, :start, :continue]
 
   def show
     if @test.finished?
