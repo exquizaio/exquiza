@@ -1,5 +1,5 @@
 class TestsController < ApplicationController
-  before_action :set_test, only: [:show, :edit, :update, :destroy, :report, :complete]
+  before_action :set_test, only: [:show, :edit, :update, :destroy, :report, :complete, :continue]
 
   respond_to :html
 
